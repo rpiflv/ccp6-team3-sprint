@@ -1,7 +1,10 @@
+import Navbar from "./Navbar"
+
 function App() {
   return (
-    <div >
-      Rendered from frontEnd
+    <div>
+      <Navbar/>
+      Hello World
     </div>
   );
 }
