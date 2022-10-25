@@ -2,7 +2,7 @@ import Navbar from "./Navbar";
 import Registration from "./registration";
 import Login from "./login";
 import List from "./List";
-import axios from "axios";
+// import axios from "axios";
 import React, { useState } from "react";
 import "./App.css";
 
