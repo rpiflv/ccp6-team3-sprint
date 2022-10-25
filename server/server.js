@@ -1,8 +1,9 @@
 require("dotenv").config()
 
-const express = require("express");
-const { getAllLists } = require("./handler/function");
+import express from "express";
+import {getAllLists} from "./handler/function.js"
 const app = express();
+
 
 const PORT = process.env.PORT || 8080;
 
