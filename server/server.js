@@ -1,4 +1,4 @@
-const express = require("express");
+import express from "express";
 import {} from "./handler/function.js"
 const app = express();
 
