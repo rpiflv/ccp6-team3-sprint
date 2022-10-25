@@ -1,4 +1,4 @@
-require('dotenv').config()
+require("dotenv").config();
 
 const path = require("path");
 const express = require("express");
@@ -6,7 +6,7 @@ const app = express();
 
 // const getAllLists = require("./handler/function")
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 //Route for Frontend
 app.use(express.static(path.join(__dirname, "..", "build")));
@@ -17,6 +17,8 @@ app.use((req, res) => {
 })
 
 app.use(express.json());
+
+
 
 // for app.get and post tests
 app.get("/api", (req, res) => {
@@ -38,12 +40,10 @@ app.post("/api/post", (req, res) => {
 //     .then(response => res.send(response))
 // });
 
-// app.post("/api/post", (req, res) => {
-//   req.on("data", (data) => {
-//   })
-//   res.send("data sent successfully")
-// })
+app.post("/api/create-list", (req, res) => {
+	console.log(req.body);
+});
 
 app.listen(PORT, () => {
-  console.log(`listening on port : ${PORT}`);
+	console.log(`listening on port : ${PORT}`);
 });
