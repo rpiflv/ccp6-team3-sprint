@@ -1,0 +1,30 @@
+.bodyDiv {
+	background-color: aquamarine;
+}
+
+.Navbar {
+	background-color: blue;
+	height: 2em;
+	border: 0.5em;
+	border-color: black;
+	border-style: solid;
+	display: flex;
+	margin-bottom: 2em;
+	width: 100%;
+}
+
+.registration {
+	background-color: brown;
+}
+
+.Login {
+	background-color: green;
+}
+
+.Item {
+	width: 50%;
+	height: 50px;
+	background-color: red;
+	color: white;
+	margin: 10px;
+}
