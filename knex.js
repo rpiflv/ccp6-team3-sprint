@@ -1,8 +1,8 @@
 // Setting the configuration according to the environment
 
 require("dotenv").config({ path: './.env.local' })
-const knexConfig = require("../db/knexfile");
 const knex = require("knex")
+const knexConfig = require("./knexfile");
 
 let environment = process.env.NODE_ENV;
 
