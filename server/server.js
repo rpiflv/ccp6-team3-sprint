@@ -1,7 +1,7 @@
-require("dotenv").config()
+require("dotenv").config({path: })
 
-import express from "express";
-import {getAllLists} from "./handler/function.js"
+const express = require("express");
+// const getAllLists = require("./handler/function")
 const app = express();
 
 
