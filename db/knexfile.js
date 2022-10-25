@@ -1,9 +1,5 @@
 require('dotenv').config()
 
-// DB configurations
-/**
- * @type { Object.<string, import("knex").Knex.Config> }
- */
 module.exports = {
 
     development: {
