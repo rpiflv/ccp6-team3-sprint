@@ -1,5 +1,7 @@
+require("dotenv").config();
+
 const express = require("express");
-import {} from "./handler/function.js"
+// const getAllLists = require("./handler/function")
 const app = express();
 
 const PORT = process.env.PORT || 8080;
@@ -7,22 +9,30 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json());
 app.use("/", express.static("/public"));
 
-app.get("/", (req, res) => {
-  res.send("Hello World from server.js")
-})
+//Routes
 
-app.get("/api/get", (req, res) => {
-  res.send("All lists")
-})
+// home page
+app.get("/api", (req, res) => {
+	res.send("Hello World from server.js");
+});
 
-app.post("/api/post", (req, res) => {
-  req.on("data", (data) => {
+// showing all lists
+app.get("/api/lists", async (req, res) => {
+	await getAllLists().then((response) => res.send(response));
+});
 
-  })
-  
-  res.send("data sent successfully")
-})
+app.post("/api/create-list", (req, res) => {
+	console.log(req.body);
+});
+
+// app.post("/api/post", (req, res) => {
+//   req.on("data", (data) => {
+
+//   })
+
+//   res.send("data sent successfully")
+// })
 
 app.listen(PORT, () => {
-  console.log(`listening on port : ${PORT}`);
+	console.log(`listening on port : ${PORT}`);
 });
