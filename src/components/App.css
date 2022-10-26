@@ -3,14 +3,21 @@
 }
 
 .Navbar {
-	background-color: blue;
+	/* background-color: blue; */
 	height: 2em;
-	border: 0.5em;
-	border-color: black;
-	border-style: solid;
+	/* border: 0.5em; */
+	/* border-color: black; */
+	/* border-style: solid; */
 	display: flex;
 	margin-bottom: 2em;
 	width: 100%;
+	position: ;
+}
+
+.Logo {
+	font-family: 'Alfa Slab One';
+	font-size: 30px;
+	text-align: center;
 }
 
 .registration {
@@ -19,7 +26,12 @@
 
 .Login {
 	background-color: green;
+	padding: 10px;
+	
+
 }
+
+
 
 .Item {
 	width: 50%;

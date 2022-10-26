@@ -6,7 +6,7 @@ export default function Navbar(props) {
 
 	return (
 		<div className="Navbar">
-			<label>Get Eat</label>
+			<label className="Logo">Get Eat</label>
 		</div>
 	);
 }
