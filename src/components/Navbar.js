@@ -1,27 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import "./App.css";
 
 export default function Navbar(props) {
 
-  
-
-  return (<div>
-    <input type="text" placeholder="Item Name"></input>
-    <button type="addItem" onClick={() => {
-      
-      console.log("HELLO ")
-    }}>Add</button>
-  </div>
-
-
-  )
-
-
-
+	return (
+		<div className="Navbar">
+			<label>Get Eat</label>
+		</div>
+	);
 }
-
-
-
-
-
-
-
