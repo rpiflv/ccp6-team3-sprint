@@ -1,9 +1,7 @@
-// Setting the configuration according to the environment
+require("dotenv").config()
+const environment = process.env.NODE_ENV;
 
-require("dotenv").config({ path: './.env.local' })
-const knex = require("knex")
-const knexConfig = require("./db/knexfile");
+const config = require("./db/knexfile")[environment];
+const knex = require("knex")(config)
 
-let environment = process.env.NODE_ENV;
-
-module.exports = knex(knexConfig[environment]);
+module.exports = knex;
