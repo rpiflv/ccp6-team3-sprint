@@ -18,24 +18,24 @@ export default function Login(props) {
 			<form
 				onSubmit={async (e) => {
 					e.preventDefault();
-					let x = await axios.post("/api/create-list", { listName });
-					console.log(x.data);
+					let data = await axios.post("/api/create-list", { listName });
+					console.log(data.data);
 					setListName("");
-					lists.push(x.data);
+					lists.push(data.data);
 					console.log(lists);
 				}}
 			>
 				<input
 					type="text"
-					className="add-item-box"
-					placeholder="Item Name"
+					className="add-list-box"
+					placeholder="List Name"
 					onChange={(e) => {
 						setListName(e.target.value);
 					}}
 				></input>
-				<button type="addItem">Add List</button>
+				<button type="submit">Add List</button>
 			</form>
-			{console.log(lists)}
+			{/* {console.log(lists)} */}
 			{lists.map((listData, index) => (
 				// <img
 				// 	alt=""

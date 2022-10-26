@@ -46,6 +46,12 @@ app.post("/api/create-list", (req, res) => {
 	// res.send("HELLOOOO");
 });
 
+app.post("/api/add-item", (req, res) => {
+	console.log(req.body);
+	// res.send("This is working");
+	res.send(JSON.stringify(req.body));
+});
+
 // we might do not need this middleware
 // app.use((req, res) => {
 //   res.sendFile(path.join(__dirname, "..", "build", "index.html"));

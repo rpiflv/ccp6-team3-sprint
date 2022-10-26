@@ -9,14 +9,19 @@ import "./App.css";
 
 function App() {
 	const [currentView, setCurrentView] = useState("allLists");
+	const [loginView, setLoginView] = useState("registration");
 	const [lists, setLists] = useState([]);
 	const [selectedList, setSelectedList] = useState("");
+	
 
 	return (
 		<div className="bodyDiv">
-			<Navbar />
-			{/* <Registration /> */}
-			<Login />
+			<Navbar setCurrentView={setCurrentView} />
+			{loginView === "registration" ? (
+				<Registration loginView={loginView} setLoginView={setLoginView} />
+			) : (
+				<Login />
+			)}
 			{currentView === "allLists" ? (
 				<AllList
 					setLists={setLists}
@@ -27,8 +32,8 @@ function App() {
 					selectedList={selectedList}
 				/>
 			) : (
-				<SingleList 
-					
+				<SingleList
+					selectedList={selectedList}
 				/>
 			)}
 			<br />
