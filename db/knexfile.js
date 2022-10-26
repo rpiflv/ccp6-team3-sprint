@@ -1,9 +1,5 @@
 require('dotenv').config()
 
-// DB configurations
-/**
- * @type { Object.<string, import("knex").Knex.Config> }
- */
 module.exports = {
     development: {
         client: 'postgresql',
@@ -30,7 +26,7 @@ module.exports = {
             directory: "./migrations",
         },
         seeds: {
-            directory: "./db/seeds"
+            directory: "./seeds"
         },
     }
 };
