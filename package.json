@@ -19,9 +19,8 @@
   },
   "scripts": {
     "start": "nodemon ./server/server.js",
-    "build": "npm install && npx react-scripts build",
-    "latest-migrate": "npx knex migrate:latest --knexfile knexfile.js",
-    "seed": "npx knex seed:run --knexfile knexfile.js",
+    "build": "npm install && npx react-scripts build && npm run migrate-latest",
+    "migrate-latest": "knex migrate:latest --knexfile db/knexfile.js --knexpath knex.js --debug",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
