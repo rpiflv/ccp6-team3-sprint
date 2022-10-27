@@ -27,6 +27,15 @@ app.get("/api", async (req, res) => {
 
 //GET METHOD
 
+//user data
+app.get("/api/user/:userId", async (req, res) => {
+  const userId = Number(req.params.userId);
+  await getUserData(userId).then((data) => {
+    console.log(data);
+    res.send(data);
+  });
+});
+
 //all lists data
 app.get("/api/lists", async (req, res) => {
   await getAllLists().then((data) => {
@@ -44,14 +53,9 @@ app.get("/api/items/:listId", async (req, res) => {
   });
 });
 
-app.get("/api/user/:userId", async (req, res) => {
-  const userId = Number(req.params.userId);
-  await getUserData(userId).then((data) => {
-    console.log(data);
-    res.send(data);
-  });
-});
+//
 
+//
 app.post("/api/create-list", (req, res) => {
   console.log(req.body);
   res.send(JSON.stringify(req.body));
