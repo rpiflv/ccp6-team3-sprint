@@ -26,7 +26,7 @@ export default function Login(props) {
 					Add List
 				</button>
 			</form>
-            <div className="Item">List Item 1</div>
+            <div className="Item">List Item 1 <input type="checkbox"></input></div>
             <div className="Item">List Item 2</div>
             <div className="Item">List Item 3</div>
             <div className="Item">List Item 4</div>
