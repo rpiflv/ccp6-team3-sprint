@@ -10,8 +10,8 @@
 ```
 Table lists {
   id serial [pk]
-  name varchar(255)
-  owner varchar(255)
+  list_name varchar(255)
+  list_owner int [ref: > users.id, not null]
 }
 ```
 
@@ -20,18 +20,18 @@ Table lists {
 ```
 Table items {
   id serial [pk]
-  name varchar(255)
+  item_name varchar(255)
 }
 ```
 
 ## Items in List Table
 
 ```
-Table items-in-list {
-  lists id [ref: > lists.id, not null]
-  items id [ref: > items.id, not null]
+Table items_in_list {
+  lists_id int [ref: > lists.id, not null]
+  items_id int [ref: > items.id, not null]
   quantity int [not null]
-  done boolean [not null]
+  purchased boolean [not null]
 }
 ```
 
@@ -39,16 +39,17 @@ Table items-in-list {
 
 ```
   id serial [pk]
-  username varchar(255)
-  pro-pic bytea
-  password 
+  user_name varchar(32)
+  user_email varchar(32)
+  user_pro_pic bytea
+  user_password vachar(64)
 ```
 
 ## Users in List Table
 
 ```
-users-in-list {
-  lists id [ref: > lists.id, not null]
-  users id [ref: > items.id, not null]
+users_in_list {
+  list_id int [ref: > lists.id, not null]
+  user_id int [ref: > users.id, not null]
 }
 ```

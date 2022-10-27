@@ -4,7 +4,7 @@ const path = require("path");
 const express = require("express");
 const app = express();
 
-// const { getAllLists } = require("./handler/function");
+const { getAllLists } = require("./handler/function");
 
 const PORT = process.env.PORT || 8080;
 
@@ -51,11 +51,6 @@ app.post("/api/add-item", (req, res) => {
 	// res.send("This is working");
 	res.send(JSON.stringify(req.body));
 });
-
-// we might do not need this middleware
-// app.use((req, res) => {
-//   res.sendFile(path.join(__dirname, "..", "build", "index.html"));
-// })
 
 app.listen(PORT, () => {
 	console.log(`listening on port : ${PORT}`);
