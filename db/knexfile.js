@@ -4,19 +4,15 @@ module.exports = {
     development: {
         client: 'postgresql',
         connection: {
-            database: process.env.PSQL_DATABASE,
-            user: process.env.PSQL_USER,
+            database: process.env.PSQL_DATABASE || "geteat",
+            user: process.env.PSQL_USER || "Rick",
             password: process.env.PSQL_PASSWORD
         },
-        pool: {
-            min: 2,
-            max: 10
-        },
         migrations: {
-            directory: './db/migrations'
+            directory: "./migrations"
         },
         seeds: {
-            directory: './db/seeds'
+            directory: "./seeds"
         }
     },
 
@@ -24,7 +20,7 @@ module.exports = {
         client: "postgresql",
         connection: process.env.DATABASE_URL,
         migrations: {
-            directory: "./migrations",
+            directory: "./migrations"
         },
         seeds: {
             directory: "./seeds"
