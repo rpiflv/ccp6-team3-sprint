@@ -38,4 +38,6 @@
 */
 exports.down = async function (knex) {
   await knex.schema.dropTable('shopping_lists')
+   await knex.schema.dropTable('items')
+  await knex.schema.dropTable('items_in_list')
 };
