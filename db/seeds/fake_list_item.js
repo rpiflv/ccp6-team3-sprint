@@ -16,4 +16,7 @@ exports.seed = async function (knex) {
   await knex("items_in_list").insert([
     { list_id: 1, item_id: 1, quantity: 10, purchased: false },
   ]);
+  await knex("users_in_list").insert({
+    
+  })
 };

@@ -28,14 +28,14 @@ Table items {
 
 ```
 Table items_in_list {
-  lists_id int [ref: > lists.id, not null]
-  items_id int [ref: > items.id, not null]
+  list_id int [ref: > lists.id, not null]
+  item_id int [ref: > items.id, not null]
   quantity int [not null]
   purchased boolean [not null]
 }
 ```
 
-## Users Table 
+## Users Table
 
 ```
   id serial [pk]
