@@ -21,7 +21,7 @@
     "start": "nodemon ./server/server.js",
     "build": "npm cache clean && install && npx react-scripts build && npm run migrate-latest && npm run seed-data",
     "migrate-latest": "npx knex migrate:latest --knexfile db/knexfile.js",
-    "seed-data": "npx knex seed:run --knexfile db/knexfile.js"
+    "seed-data": "npx knex seed:run --knexfile db/knexfile.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
