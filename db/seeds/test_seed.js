@@ -13,7 +13,7 @@ exports.seed = async function (knex) {
   await knex("users").insert([{
     user_name: "test user",
     user_email: "abc@ccp6team3.com",
-    user_passward: "0123456789"
+    user_password: "0123456789"
   }]);
   await knex("lists").insert([{ list_name: "test list",}]);
   await knex("items").insert([
