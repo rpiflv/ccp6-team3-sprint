@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config({path: '../.env.local'})
 
 module.exports = {
     development: {
@@ -15,7 +15,6 @@ module.exports = {
             directory: "./seeds"
         }
     },
-
     production: {
         client: "postgresql",
         connection: process.env.DATABASE_URL,
