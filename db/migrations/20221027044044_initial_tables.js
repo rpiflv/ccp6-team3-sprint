@@ -3,6 +3,7 @@
  * @returns { Promise<void> }
  */
 exports.up = async (knex) => {
+  await knex.schema.dropTable('items_in_list')
   await knex.schema.createTable("users", (table) => {
     table.increments("id").primary();
     table.string("user_name", 32);
