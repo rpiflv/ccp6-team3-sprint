@@ -5,13 +5,8 @@ import { Button } from "react-bootstrap";
 
 export default function Login(props) {
 	const [listName, setListName] = useState("");
-	const {
-		setLists,
-		lists,
-		setCurrentView,
-		setSelectedList,
-		selectedList,
-	} = props;
+	const { setLists, lists, setCurrentView, setSelectedList, selectedList } =
+		props;
 
 	return (
 		<div className="List">
