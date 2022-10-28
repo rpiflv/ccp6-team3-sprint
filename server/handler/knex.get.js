@@ -23,7 +23,6 @@ module.exports = {
         purchased: "purchased"
       })
       .from("items_in_list")
-      .join("items", { "items.id": "items_in_list.item_id" })
       .where("items_in_list.list_id", "=", listId);
   },
 
