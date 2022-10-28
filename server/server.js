@@ -98,7 +98,7 @@ app.post("/api/user", async (req, res) => {
 })
 
 //create list
-app.post("/api/user/:userId/add-list", async (req, res) => {
+app.post("/api/lists/add", async (req, res) => {
   const userId = Number(req.params.userId);
   req.body.userId = userId;
   await addList(req.body);
