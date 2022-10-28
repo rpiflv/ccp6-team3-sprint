@@ -99,8 +99,8 @@ app.post("/api/user", async (req, res) => {
 
 //create list
 app.post("/api/lists/add", async (req, res) => {
-  const userId = Number(req.params.userId);
-  req.body.userId = userId;
+  // const userId = Number(req.params.userId);
+  // req.body.userId = userId;
   await addList(req.body);
   res.send(JSON.stringify(req.body));
 });
