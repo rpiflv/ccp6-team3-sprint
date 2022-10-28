@@ -20,7 +20,7 @@ export default function SingleList(props) {
 	});
 
 	return (
-		<div>
+		<div className="singleList">
 			<p>Hello this is from Single List compo</p>
 			<p>This is the ""{selectedList.listName}"" list</p>
 			<p>This is the ID of this list ""{selectedList.id}""</p>
@@ -28,10 +28,12 @@ export default function SingleList(props) {
 				onSubmit={async (e) => {
 					e.preventDefault();
 					const item = { itemName, quantity };
-					let data = await axios.post("/api/add-item", item);
+					let data = await axios.post(
+						`/api/lists/${selectedList.id}/addItem`,
+						item
+					);
 					setItemName("");
 					setQuantity(0);
-					selectedList.items.push(data.data);
 				}}
 			>
 				<input
@@ -69,11 +71,20 @@ export default function SingleList(props) {
 							<input
 								type="checkbox"
 								checked={item.purchased === true ? "checked" : ""}
+								// onClick={(e) => {
+								// 	console.log(e.target.checked);
+								// }}
 							></input>
 						</td>
 					</tr>
 				))}
 			</table>
+			{/* <input
+				type="checkbox"
+				onClick={(e) => {
+					console.log(e.target.checked);
+				}}
+			></input> */}
 		</div>
 	);
 }

@@ -6,6 +6,7 @@ import SingleList from "./SingleList";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
 	const [currentView, setCurrentView] = useState("allLists");
@@ -20,7 +21,7 @@ function App() {
 	};
 	useEffect(() => {
 		getList();
-	}, []);
+	}, [lists]);
 
 	return (
 		<div className="bodyDiv">

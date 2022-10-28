@@ -25,9 +25,9 @@ const {
 const {
 	addList,
 	addUser,
-	addItemToList,
-	addUserTolist,
-} = require("./handler/knex.post");
+	addItemsToList,
+	addUserTolist
+  } = require("./handler/knex.post")
 
 const {
 	deleteUser,
@@ -99,6 +99,7 @@ app.post("/api/user", async (req, res) => {
 app.post("/api/lists/add", async (req, res) => {
 	// const userId = Number(req.params.userId);
 	// req.body.userId = userId;
+	console.log(req.body);
 	await addList(req.body);
 	res.send(JSON.stringify(req.body));
 });
@@ -106,12 +107,10 @@ app.post("/api/lists/add", async (req, res) => {
 //add items to list
 app.post("/api/lists/:listId/addItem", async (req, res) => {
 	const listId = Number(req.params.listId);
-	await addItemsTolist(req.body, listId);
-	// req.body.listId = listId;
-
-	console.log(req.body);
-	await addItemToList(req.body, id);
+	console.log(listId);
+	await addItemsToList(req.body, listId);
 	res.send(JSON.stringify(req.body));
+
 });
 
 //add user to list
@@ -121,13 +120,13 @@ app.post("/api/list:listId/add-user", async (req, res) => {
 
 //DELETE METHOD
 
-app.delete("/api/delete/user/:userId", async (req, res) => {
-	await deleteUser(userId);
-});
+// app.delete("/api/delete/user/:userId", async (req, res) => {
+// 	await deleteUser(userId);
+// });
 
-app.delete("/api/delete/list/:listId", async (req, res) => {
-	await deleteList(listId);
-});
+// app.delete("/api/delete/list/:listId", async (req, res) => {
+// 	await deleteList(listId);
+// });
 
 app.delete("/api/delete/item", async (req, res) => {
 	await deleteUserFromList(req.body);
