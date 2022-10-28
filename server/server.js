@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ path: "./.env.local" });
 
 const path = require("path");
 const express = require("express");
@@ -6,14 +6,11 @@ const app = express();
 
 //ROUTE for DATABASE
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
 
 app.use(express.static(path.join(__dirname, "..", "build")));
 app.use(express.static("public"));
 
-app.listen(PORT, () => {
-  console.log(`listening on port : ${PORT}`);
-});
 
 //ROUTE for FRONTEND
 app.use(express.json());
@@ -141,7 +138,6 @@ app.delete("/api/delete/item", async (req, res) => {
   await deleteUserFromList(req.body)
 })
 
-
 app.delete("/api/delete/user-list", async (req, res) => {
   await deleteUserFromList(req.body)
 })
@@ -152,3 +148,7 @@ app.delete("/api/delete/user-list", async (req, res) => {
 //     res.send({ granted: true })
 //   }
 // })
+
+app.listen(PORT, () => {
+  console.log(`listening on port : ${PORT}`);
+});
