@@ -13,6 +13,14 @@ function App() {
 	const [lists, setLists] = useState([]);
 	const [selectedList, setSelectedList] = useState("");
 
+	const getList = async () => {
+		let data = await axios.get("/api/lists");
+		setLists(data.data);
+	};
+	useEffect(() => {
+		getList();
+	}, []);
+
 	return (
 		<div className="bodyDiv">
 			<Navbar setCurrentView={setCurrentView} />
