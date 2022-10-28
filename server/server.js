@@ -106,7 +106,7 @@ app.post("/api/lists/add", async (req, res) => {
 });
 
 //add items to list 
-app.post("/api/list/:listId/add-item", async (req, res) => {
+app.post("/api/lists/:listId/addItem", async (req, res) => {
   const listId = Number(req.params.listId);
   await addItemsTolist(req.body, listId)
   // req.body.listId = listId;
