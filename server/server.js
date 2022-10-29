@@ -38,7 +38,7 @@ const {
 
 const {
   updateItemState
-} = require("./handler/knex.update");
+} = require("./handler/knex.put");
 
 
 //GET METHOD
@@ -109,7 +109,7 @@ app.post("/api/lists/add", async (req, res) => {
 });
 
 //add items to list
-app.post("/api/lists/:listId/addItem", async (req, res) => {
+app.post("/api/list/:listId/addItem", async (req, res) => {
   const listId = Number(req.params.listId);
   console.log(listId);
   await addItemsToList(req.body, listId);
@@ -117,19 +117,21 @@ app.post("/api/lists/:listId/addItem", async (req, res) => {
 });
 
 //add user to list
-app.post("/api/list:listId/add-user", async (req, res) => {
+app.post("/api/list/add-user", async (req, res) => {
   await addUserTolist(req.body);
+
+  res.send(JSON.stringify(req.body));
 });
 
 
 //UPDATE METHOD
 
 //update item state
-app.update("/api/lists/:listId/toggle", async (req, res) => {
+app.put("/api/list/:listId/toggle", async (req, res) => {
   const listId = Number(req.params.listId);
 	await updateItemState(req.body, listId);
 
-	res.send(req.body);
+  res.send(JSON.stringify(req.body));
 });
 
 
