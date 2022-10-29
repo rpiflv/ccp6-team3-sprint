@@ -74,7 +74,7 @@ export default function SingleList(props) {
 							// onClick={(e) => {
 							// 	console.log(e.target.checked);
 							// }}
-							>X</input>
+							></input>
 // 							<input
 // 								type="button"
 // 								onClick={async (e) => {
