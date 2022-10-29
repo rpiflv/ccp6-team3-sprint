@@ -29,7 +29,7 @@ function App() {
 			{loginView === "registration" ? (
 				<Registration loginView={loginView} setLoginView={setLoginView} />
 			) : (
-				<Login />
+				<Login loginView={loginView} setLoginView={setLoginView} />
 			)}
 			{currentView === "allLists" ? (
 				<AllList
