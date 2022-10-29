@@ -60,7 +60,7 @@ function App() {
         />
       )}
 
-      {currentView === "singList" && (
+      {currentView === "singleList" && (
         <SingleList
           selectedList={selectedList}
           lists={lists}
