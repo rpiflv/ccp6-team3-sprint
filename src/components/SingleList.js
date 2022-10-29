@@ -35,7 +35,7 @@ export default function SingleList(props) {
 			>
 				<input
 					type="text"
-					// className="add-list-box"
+					id ="add-list-box"
 					placeholder="Item Name"
 					value={itemName}
 					onChange={(e) => {
@@ -74,7 +74,7 @@ export default function SingleList(props) {
 								onClick={async (e) => {
 									const value = e.target.checked;
 									const itemName = item.itemName;
-									await axios.post(`/api/lists/${selectedList.id}/toggle`, {
+									await axios.put(`/api/lists/${selectedList.id}/toggle`, {
 										purchased: value,
 										item: itemName,
 									});

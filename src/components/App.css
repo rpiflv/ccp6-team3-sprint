@@ -51,7 +51,7 @@
 .singleList p {
 	font-weight: bold;
 	font-size: larger;
-	/* display: flex; */
+	display: flex;
 	margin: auto;
 	text-align: center;
 }
