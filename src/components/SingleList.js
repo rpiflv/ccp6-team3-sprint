@@ -71,9 +71,15 @@ export default function SingleList(props) {
 							<input
 								type="checkbox"
 								checked={item.purchased === true ? "checked" : ""}
-								// onClick={(e) => {
-								// 	console.log(e.target.checked);
-								// }}
+							// onClick={(e) => {
+							// 	console.log(e.target.checked);
+							// }}
+							>X</input>
+							<input
+								type="button"
+								onClick={async (e) => {
+									await axios.delete(`/api/lists/${selectedList.id}/${item.itemName}/delete`, { listId: selectedList.id, itemName: item.itemName })
+								}}
 							></input>
 						</td>
 					</tr>
