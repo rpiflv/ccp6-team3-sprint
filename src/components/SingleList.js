@@ -22,8 +22,8 @@ export default function SingleList(props) {
 
 	return (
 		<div className="singleList">
-			<p>This is the ""{selectedList.listName}"" list</p>
-			<p>This is the ID of this list ""{selectedList.id}""</p>
+			<p>{selectedList.listName} LIST</p>
+			{/* <p>LIST id {selectedList.id}</p> */}
 			<form
 				onSubmit={async (e) => {
 					e.preventDefault();
@@ -35,7 +35,7 @@ export default function SingleList(props) {
 			>
 				<input
 					type="text"
-					// className="add-list-box"
+					id ="add-list-box"
 					placeholder="Item Name"
 					value={itemName}
 					onChange={(e) => {
@@ -74,38 +74,16 @@ export default function SingleList(props) {
 								onClick={async (e) => {
 									const value = e.target.checked;
 									const itemName = item.itemName;
-									await axios.post(
-										`/api/list/${selectedList.id}/updatePurchase`,
-										{
-											purchased: value,
-											itemName: itemName,
-										}
-									);
+									await axios.put(`/api/lists/${selectedList.id}/toggle`, {
+										purchased: value,
+										item: itemName,
+									});
 								}}
 							></input>
-							<input
-								type="button"
-								onClick={async (e) => {
-									await axios.delete(`/api/lists/${selectedList.id}/${item.itemName}/delete`, { listId: selectedList.id, itemName: item.itemName })
-								}}
-							></input>
-							<button>X</button>
 						</td>
 					</tr>
 				))}
 			</table>
-			<input
-				type="checkbox"
-				onClick={async (e) => {
-					if (e.target.checked) {
-						console.log("This is chekd");
-					}
-					const value = e.target.checked;
-					console.log("THIS IS THE VALUE ", value);
-
-					await axios.post("/api/list/:listId/updatePurchase");
-				}}
-			></input>
 		</div>
 	);
 }

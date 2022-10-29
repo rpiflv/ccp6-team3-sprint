@@ -15,11 +15,11 @@ app.use(express.static("public"));
 app.use(express.json());
 
 const {
-  getAllLists,
-  getAllItemsFromList,
-  getUserData,
-  getAllUsersInList,
-  getAllListsOnUser,
+	getAllLists,
+	getAllItemsFromList,
+	getUserData,
+	getAllUsersInList,
+	getAllListsOnUser,
 } = require("./handler/knex.get");
 
 const {
@@ -45,51 +45,51 @@ const {
 
 //app.get tests
 app.get("/api", async (req, res) => {
-  console.log("Hello World");
-  await res.send("Hello World");
+	console.log("Hello World");
+	await res.send("Hello World");
 });
 
 //user data
 app.get("/api/user/:userId", async (req, res) => {
-  const userId = Number(req.params.userId);
-  await getUserData(userId).then((data) => {
-    console.log(data);
-    res.send(data);
-  });
+	const userId = Number(req.params.userId);
+	await getUserData(userId).then((data) => {
+		// console.log(data);
+		res.send(data);
+	});
 });
 
 //all lists data
 app.get("/api/lists", async (req, res) => {
-  await getAllLists().then((data) => {
-    console.log(data);
-    res.send(data);
-  });
+	await getAllLists().then((data) => {
+		// console.log(data);
+		res.send(data);
+	});
 });
 
 //all items in list
 app.get("/api/items/:listId", async (req, res) => {
-  const listId = Number(req.params.listId);
-  await getAllItemsFromList(listId).then((data) => {
-    res.send(data);
-  });
+	const listId = Number(req.params.listId);
+	await getAllItemsFromList(listId).then((data) => {
+		res.send(data);
+	});
 });
 
 //all users in list
 app.get("/api/users-in-list/:listId", async (req, res) => {
-  const listId = Number(req.params.listId);
-  await getAllUsersInList(listId).then((data) => {
-    console.log(data);
-    res.send(data);
-  });
+	const listId = Number(req.params.listId);
+	await getAllUsersInList(listId).then((data) => {
+		// console.log(data);
+		res.send(data);
+	});
 });
 
 //all lists user have (listId)
 app.get("/api/lists-on-user/:userId", async (req, res) => {
-  const userId = Number(req.params.userId);
-  await getAllListsOnUser(userId).then((data) => {
-    console.log(data);
-    res.send(data);
-  });
+	const userId = Number(req.params.userId);
+	await getAllListsOnUser(userId).then((data) => {
+		// console.log(data);
+		res.send(data);
+	});
 });
 
 
@@ -97,15 +97,15 @@ app.get("/api/lists-on-user/:userId", async (req, res) => {
 
 //add user
 app.post("/api/user", async (req, res) => {
-  await addUser(req.body);
-  res.send(JSON.stringify(req.body));
+	await addUser(req.body);
+	res.send(JSON.stringify(req.body));
 });
 
 //create list
 app.post("/api/lists/add", async (req, res) => {
-  console.log(req.body);
-  await addList(req.body);
-  res.send(JSON.stringify(req.body));
+	// console.log(req.body);
+	await addList(req.body);
+	res.send(JSON.stringify(req.body));
 });
 
 //add items to list
@@ -145,9 +145,9 @@ app.delete("/api/users/:userId/delete", async (req,res) => {
 
 // delete a list
 app.delete("/api/lists/:listId/delete", async (req, res) => {
-  const listId = Number(req.params.listId);
-  await deleteList(listId);
-  res.send(JSON.stringify(req.body));
+	const listId = Number(req.params.listId);
+	await deleteList(listId);
+	res.send(JSON.stringify(req.body));
 });
 
 //delete an item
