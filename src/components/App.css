@@ -42,6 +42,18 @@
 .singleList {
 	justify-content: center;
 	margin-left: 500px;
+	/* display: flex; */
+	/* background-color: #dc4731; */
+	text-align: center;
+	
+}
+
+.singleList p {
+	font-weight: bold;
+	font-size: larger;
+	/* display: flex; */
+	margin: auto;
+	text-align: center;
 }
 
 /* Styling the table ↓*/
@@ -67,7 +79,6 @@ th[scope="row"] {
 }
 
 table {
-	border-collapse: collapse;
 	letter-spacing: 1px;
 	font-family: sans-serif;
 	font-size: .8rem;
