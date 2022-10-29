@@ -52,9 +52,9 @@ export default function SingleList(props) {
 						setQuantity(e.target.value);
 					}}
 				></input>
-				<button type="submit" variant="outline-dark">
+				<Button type="submit" variant="outline-dark">
 					Add Item
-				</button>
+				</Button>
 			</form>
 			<table>
 				<tr>
