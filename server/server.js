@@ -27,15 +27,19 @@ const {
 	addUser,
 	addItemsToList,
 	addUserTolist,
-	updatePurchase,
 } = require("./handler/knex.post");
 
 const {
   deleteUser,
   deleteList,
-  deleteItem,
+  deleteItemInList,
   deleteUserFromList,
 } = require("./handler/knex.delete");
+
+const {
+  updateItemState
+} = require("./handler/knex.update");
+
 
 //GET METHOD
 
@@ -88,8 +92,10 @@ app.get("/api/lists-on-user/:userId", async (req, res) => {
   });
 });
 
+
 //POST METHOD
 
+//add user
 app.post("/api/user", async (req, res) => {
   await addUser(req.body);
   res.send(JSON.stringify(req.body));
@@ -110,26 +116,30 @@ app.post("/api/lists/:listId/addItem", async (req, res) => {
   res.send(JSON.stringify(req.body));
 });
 
-app.post("/api/lists/:listId/:itemName/toggle", async (req, res) => {
-  const listId = Number(req.params.listId);
-  const itemName = req.params.itemName;
-});
-
 //add user to list
 app.post("/api/list:listId/add-user", async (req, res) => {
   await addUserTolist(req.body);
 });
 
-app.post("/api/lists/:listId/:itemName/toggle", async (req, res) => {
-	console.log("This is from the back ned");
-	console.log(req.params.listId);
-	// await updatePurchase(req.body, req.params.listId);
-	console.log(req.body);
+
+//UPDATE METHOD
+
+//update item state
+app.update("/api/lists/:listId/toggle", async (req, res) => {
+  const listId = Number(req.params.listId);
+	await updateItemState(req.body, listId);
+
 	res.send(req.body);
 });
 
+
 //DELETE METHOD
 
+//delete a user
+app.delete("/api/users/:userId/delete", async (req,res) => {
+  await deleteUser(userId);
+  res.send(JSON.stringify(req.body));
+})
 
 // delete a list
 app.delete("/api/lists/:listId/delete", async (req, res) => {
@@ -139,12 +149,18 @@ app.delete("/api/lists/:listId/delete", async (req, res) => {
 });
 
 //delete an item
-app.delete("/api/lists/:listId/:itemName/delete", async (req, res) => {
+app.delete("/api/lists/:listId/delete", async (req, res) => {
   const listId = Number(req.params.listId);
-  const itemName = req.params.itemName;
-  await deleteItemInList(listId, itemName);
+  await deleteItemInList(listId, req.body);
   res.send(JSON.stringify(req.body));
 });
+
+app.delete("api/lists/:userId/:listId/delete", async (req, res)=>{
+  const userId = Number(req.params.userId);
+  const listId = Number(req.params.listId);
+  await deleteUserFromList(userId, listId);
+  res.send(JSON.stringify(req.body));
+})
 
 // app.post("api/access", async (req, res) => {
 //   const dbCode = await checkCode(req.body)

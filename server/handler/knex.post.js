@@ -36,7 +36,4 @@ module.exports = {
 		});
 	},
 
-	updatePurchase(data, id) {
-		return knex.from("items_in_list").where({ id: id });
-	},
 };
