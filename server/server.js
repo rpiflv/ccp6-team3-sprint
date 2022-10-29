@@ -124,13 +124,14 @@ app.post("/api/list:listId/add-user", async (req, res) => {
 //DELETE METHOD
 
 
-
+// delete a list
 app.delete("/api/lists/:listId/delete", async (req, res) => {
   const listId = Number(req.params.listId);
   await deleteList(listId);
   res.send(JSON.stringify(req.body));
 });
 
+//delete an item
 app.delete("/api/lists/:listId/:itemName/delete", async (req, res) => {
   const listId = Number(req.params.listId);
   const itemName = req.params.itemName;
