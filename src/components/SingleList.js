@@ -75,13 +75,13 @@ export default function SingleList(props) {
 							// 	console.log(e.target.checked);
 							// }}
 							>X</input>
-							<input
-								type="button"
-								onClick={async (e) => {
-									await axios.delete(`/api/lists/${selectedList.id}/${item.itemName}/delete`, { listId: selectedList.id, itemName: item.itemName })
-								}}
-							></input>
-							<button>X</button>
+// 							<input
+// 								type="button"
+// 								onClick={async (e) => {
+// 									await axios.delete(`/api/lists/${selectedList.id}/${item.itemName}/delete`, { listId: selectedList.id, itemName: item.itemName })
+// 								}}
+// 							></input>
+// 							<button>X</button>
 						</td>
 					</tr>
 				))}
