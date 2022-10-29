@@ -10,7 +10,7 @@ import "./App.css";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
-const REGISTER_URL = "api/register";
+const REGISTER_URL = "api/user";
 
 const Registration = (props) => {
 	const { setLoginView, loginView } = props;
@@ -64,7 +64,7 @@ const Registration = (props) => {
 			return;
 		}
 		// console.log(user, pwd);
-		// setSuccess(true);
+		setSuccess(true);
 		try {
 			const response = await axios.post(
 				REGISTER_URL,
@@ -74,6 +74,8 @@ const Registration = (props) => {
 				}
 			);
 		} catch (err) {}
+		setSuccess(true);
+		setLoginView("login");
 	};
 
 	return (
@@ -228,7 +230,7 @@ const Registration = (props) => {
 					</form>
 					Already registered?
 					<button
-						id="login"
+						ClassName="login"
 						onClick={() => {
 							setLoginView("login");
 						}}
