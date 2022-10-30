@@ -7,6 +7,7 @@ export default function SingleList(props) {
 
 	const [itemName, setItemName] = useState("");
 	const [quantity, setQuantity] = useState(0);
+	const [isPurchased, setisPurchased] = useState(false)
 
 	const [itemsInList, setItemsInList] = useState([]);
 
@@ -18,7 +19,7 @@ export default function SingleList(props) {
 
 	useEffect(() => {
 		getItems();
-	});
+	}, [itemsInList, itemsInList.purchased]);
 
 	return (
 		<div className="singleList">
@@ -70,13 +71,13 @@ export default function SingleList(props) {
 						<td>
 							<input
 								type="checkbox"
-								checked={item.purchased === true ? "checked" : ""}
+								checked={isPurchased === true ? "checked" : ""}
 								onClick={async (e) => {
 									const value = e.target.checked;
 									const itemName = item.itemName;
-									await axios.put(`/api/lists/${selectedList.id}/toggle`, {
+									await axios.post(`/api/lists/${selectedList.id}/${item.itemName}/toggle`, {
 										purchased: value,
-										item: itemName,
+										// item: itemName,
 									});
 								}}
 							></input>
