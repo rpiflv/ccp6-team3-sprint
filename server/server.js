@@ -112,6 +112,7 @@ app.post("/api/lists/add", async (req, res) => {
 app.post("/api/list/:listId/addItem", async (req, res) => {
   const listId = Number(req.params.listId);
   console.log(req.body);
+
   await addItemsToList(req.body, listId);
   res.send(JSON.stringify(req.body));
 });
@@ -154,9 +155,10 @@ app.delete("/api/lists/:listId/delete", async (req, res) => {
 });
 
 //delete an item
-app.delete("/api/lists/:listId/delete", async (req, res) => {
+app.delete("/api/lists/:listId/:itemName/delete", async (req, res) => {
   const listId = Number(req.params.listId);
-  await deleteItemInList(listId, req.body);
+  const itemName = req.params.itemName;
+  await deleteItemInList(listId, itemName);
   res.send(JSON.stringify(req.body));
 });
 

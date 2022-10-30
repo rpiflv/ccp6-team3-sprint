@@ -19,11 +19,11 @@ export default function SingleList(props) {
 
 	useEffect(() => {
 		getItems();
-	}, [itemsInList, itemsInList.purchased]);
+	}, [itemsInList]);
 
 	return (
 		<div className="singleList">
-			<p>{selectedList.listName} LIST</p>
+			{/* <p>{selectedList.listName} LIST</p> */}
 			{/* <p>LIST id {selectedList.id}</p> */}
 			<form
 				onSubmit={async (e) => {
@@ -32,6 +32,7 @@ export default function SingleList(props) {
 					await axios.post(`/api/list/${selectedList.id}/addItem`, item);
 					setItemName("");
 					setQuantity(0);
+					// setisPurchased(false)
 				}}
 			>
 				<input
@@ -58,29 +59,35 @@ export default function SingleList(props) {
 				</Button>
 			</form>
 			<table>
+				<thead>{selectedList.listName}</thead>
 				<tr>
 					<th>Item Name</th>
 					<th>Quantity</th>
 					<th>Done</th>
+					<th>Delete</th>
 				</tr>
 				{itemsInList.map((item, index) => (
 					<tr>
 						<td>{item.itemName}</td>
 						<td>{item.quantity}</td>
-						{/* {console.log(item)} */}
 						<td>
 							<input
 								type="checkbox"
-								checked={isPurchased === true ? "checked" : ""}
+								checked={item.purchased === true ? "checked" : ""}
 								onClick={async (e) => {
 									const value = e.target.checked;
-									const itemName = item.itemName;
+									console.log(e.target)
 									await axios.post(`/api/lists/${selectedList.id}/${item.itemName}/toggle`, {
-										purchased: value,
-										// item: itemName,
+										purchased: !item.purchased,
 									});
+									getItems()
 								}}
 							></input>
+						</td>
+						<td>
+							<button onClick={async (e) => {
+								await axios.delete(`/api/lists/${selectedList.id}/${item.itemName}/delete`)
+							}}>X</button>
 						</td>
 					</tr>
 				))}
