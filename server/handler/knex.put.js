@@ -7,7 +7,7 @@ module.exports = {
 			.where('item_name', itemName)
 			.update('purchased', data.purchased)
 			.catch((err) => console.log(err))
-			.then(res => console.log(res))
+			.then(res => console.log("update"))
 
 	}
 
